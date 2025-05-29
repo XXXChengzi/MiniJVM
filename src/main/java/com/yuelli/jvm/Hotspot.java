@@ -1,7 +1,7 @@
 package com.yuelli.jvm;
 
 import tech.medivh.classpy.classfile.ClassFile;
-import tech.medivh.classpy.classfile.ClassFileParser;
+import tech.medivh.classpy.classfile.MethodInfo;
 
 import java.io.File;
 import java.util.Arrays;
@@ -21,6 +21,9 @@ public class Hotspot {
     // 加载主类
     public void start() throws ClassNotFoundException {
         ClassFile mainClassFile = classLoader.loadClass(mainClass);
+        StackFrame stackFrame = new StackFrame(mainClassFile.getMainMethod(), mainClassFile.getConstantPool());
+        Thread thread = new Thread("mainThread", stackFrame, classLoader);
+        thread.start();
     }
 
 }
