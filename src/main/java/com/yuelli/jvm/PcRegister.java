@@ -23,7 +23,7 @@ public class PcRegister implements Iterable<Instruction>{
 
         @Override
         public boolean hasNext() {
-            return jvmStack.isEmpty();
+            return !jvmStack.isEmpty();
         }
 
         @Override

@@ -19,7 +19,7 @@ public class Hotspot {
     }
 
     // 加载主类
-    public void start() throws ClassNotFoundException {
+    public void start() throws Exception {
         ClassFile mainClassFile = classLoader.loadClass(mainClass);
         StackFrame stackFrame = new StackFrame(mainClassFile.getMainMethod(), mainClassFile.getConstantPool());
         Thread thread = new Thread("mainThread", stackFrame, classLoader);
